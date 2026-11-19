@@ -45,7 +45,7 @@
     warnEl.textContent = "Heads up: on Sundays the gym is open 1 PM to 7 PM only.";
     const text = message();
     preview.textContent = text;
-    sms.href = `sms:${PHONE}?&body=${encodeURIComponent(text)}`;
+    if (sms) sms.href = `sms:${PHONE}?&body=${encodeURIComponent(text)}`;
   }
 
   form.addEventListener("input", render);
