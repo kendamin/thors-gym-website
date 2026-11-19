@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thor's Gym Butuan · Strong Mind, Strong Body</title>
+<meta name="description" content="Thor's Gym in Butuan City: full weights floor, cardio, Equipment Pilates, Muay Thai, Zumba and a Himalayan salt sauna. 1st Level, R.C. Intino Building 2, North Montilla Blvd.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#121214">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/floor-800.webp" imagesrcset="assets/floor-800.webp 800w, assets/floor.webp 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#F4F2EC; --muted:#B9B6AC; --bg:#121214; --coal:#1A1A1D; --panel:#232327; --line:#34343A;
+    --yellow:#F5D90A; --yellow-ink:#141210;
+    --display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+    --text:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --r:14px; --gutter:clamp(16px,4vw,40px);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--text);overflow-x:clip}
+  img,video{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-underline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:1.02;margin:0;text-wrap:balance;text-transform:uppercase}
+  p{margin:0;text-wrap:pretty}
+  ::selection{background:var(--yellow);color:var(--yellow-ink)}
+  :focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--yellow);color:var(--yellow-ink);padding:10px 14px;border-radius:10px;font-weight:700}
+  .skip:focus{top:12px}
+  .wrap{width:min(1180px,100% - 2*var(--gutter));margin-inline:auto}
+  section{padding-block:clamp(56px,9vw,104px)}
+  .kicker{color:var(--yellow);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:10px}
+  .h2{font-size:clamp(34px,6vw,60px)}
+  .lead{color:var(--muted);font-size:clamp(16px,2vw,18px);max-width:60ch;margin-top:14px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:700;transition:background-color .15s,color .15s,transform .12s}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-y{background:var(--yellow);color:var(--yellow-ink)}
+  .btn-ghost{border-color:#55555C;color:var(--ink);background:rgba(18,18,20,.55)}
+  .btn:active{transform:translateY(1px)}
+  @media (hover:hover) and (pointer:fine){
+    .btn-y:hover{background:#FFE53A}
+    .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+  }
+
+  /* header */
+  .top{position:sticky;top:0;z-index:20;background:rgba(18,18,20,.92);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:16px;min-height:64px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+  .brand img{width:44px;height:44px}
+  .brand b{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.02em;text-transform:uppercase}
+  .nav{display:none;gap:22px}
+  .nav a{text-decoration:none;color:var(--muted);font-weight:600;font-size:15px}
+  .nav a:hover{color:var(--ink)}
+  .top .btn{min-height:42px;padding:8px 16px}
+  @media (min-width:880px){.nav{display:flex}}
+
+  /* hero */
+  .hero{position:relative;padding:0;min-height:min(88svh,760px);display:grid;align-items:end;isolation:isolate}
+  .hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,18,20,.15) 0%,rgba(18,18,20,.35) 45%,rgba(18,18,20,.94) 100%)}
+  @media (min-width:900px){.hero::after{background:linear-gradient(90deg,rgba(18,18,20,.88) 0%,rgba(18,18,20,.55) 45%,rgba(18,18,20,0) 75%),linear-gradient(180deg,rgba(18,18,20,0) 60%,rgba(18,18,20,.9) 100%)}}
+  .hero .wrap{padding-block:120px 48px}
+  .hero h1{font-size:clamp(48px,11vw,112px);max-width:12ch}
+  .hero h1 span{color:var(--yellow)}
+  .hero p{font-size:clamp(17px,2.4vw,21px);max-width:44ch;margin-top:16px;color:#E4E1D8}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .status{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:6px 12px;border-radius:999px;background:rgba(18,18,20,.75);border:1px solid var(--line);font-size:14px;font-weight:600}
+  .status i{width:9px;height:9px;border-radius:50%;background:#8A8A90}
+  .status.open i{background:#3DDC84}
+  .status.closed i{background:#FF6B5B}
+
+  /* facts strip */
+  .facts{padding-block:0;background:var(--yellow);color:var(--yellow-ink)}
+  .facts ul{list-style:none;margin:0;padding:18px 0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .facts li{display:flex;gap:12px;align-items:flex-start;font-weight:600;line-height:1.35}
+  .facts svg{width:22px;height:22px;flex:none;margin-top:1px}
+  .facts small{display:block;font-weight:500;opacity:.8}
+  .facts a{text-decoration:underline}
+
+  /* services */
+  .svc-grid{display:grid;gap:16px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+  .svc{background:var(--coal);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+  .svc img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+  .svc div{padding:18px 18px 20px;display:grid;gap:8px}
+  .svc h3{font-size:26px}
+  .svc p{color:var(--muted);font-size:15px}
+  .svc .price{color:var(--yellow);font-weight:700;font-size:15px}
+  .svc.wide{grid-column:1/-1}
+  @media (min-width:900px){
+    .svc.wide{flex-direction:row}
+    .svc.wide img{width:55%;aspect-ratio:auto;min-height:320px}
+    .svc.wide div{align-content:center;padding:28px 32px}
+    .svc.wide h3{font-size:38px}
+  }
+
+  /* rates */
+  .rates{background:var(--coal);border-block:1px solid var(--line)}
+  .rates-layout{display:grid;gap:32px}
+  @media (min-width:960px){.rates-layout{grid-template-columns:1fr 1.4fr;align-items:start}}
+  .member-card{background:var(--yellow);color:var(--yellow-ink);border-radius:var(--r);padding:24px;display:grid;gap:10px;margin-top:26px}
+  .member-card .big{font-family:var(--display);font-size:64px;line-height:1}
+  .member-card .big small{font-family:var(--text);font-size:16px;font-weight:700;margin-left:6px}
+  .member-card p{font-weight:600}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  caption{text-align:left;padding:16px 16px 0;color:var(--muted);font-size:14px}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  tbody th{font-weight:700}
+  tbody th small{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-top:2px}
+  td{white-space:nowrap;font-weight:700}
+  td.y{color:var(--yellow)}
+  tbody tr:last-child>*{border-bottom:0}
+  .rate-note{margin-top:14px;color:var(--muted);font-size:14px}
+  .discount{margin-top:18px;display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:var(--r);border:1px dashed var(--yellow);font-weight:600}
+  .discount b{color:var(--yellow);font-family:var(--display);font-weight:400;font-size:30px;line-height:1}
+
+  /* tour */
+  .tour-box{position:relative;margin-top:30px;border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:16/9}
+  .tour-box video{width:100%;height:100%;object-fit:cover}
+  .tour-play{position:absolute;inset:0;display:grid;place-items:center;border:0;background:rgba(0,0,0,.25);cursor:pointer;color:var(--yellow-ink)}
+  .tour-play span{display:inline-flex;align-items:center;gap:10px;background:var(--yellow);padding:14px 22px;border-radius:999px;font-weight:700;font-size:17px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  .tour-play svg{width:22px;height:22px}
+  .tour-play[hidden]{display:none}
+  @media (max-width:640px){.tour-box{aspect-ratio:9/14}}
+
+  /* gallery */
+  .gallery{display:grid;gap:10px;margin-top:30px;grid-template-columns:repeat(2,1fr)}
+  @media (min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
+  .gallery button{padding:0;border:0;background:var(--coal);border-radius:10px;overflow:hidden;cursor:zoom-in;aspect-ratio:1}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .gallery button:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+
+  /* join */
+  .steps{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:14px;counter-reset:s;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+  .steps li{counter-increment:s;background:var(--coal);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:6px}
+  .steps li::before{content:counter(s);font-family:var(--display);font-size:40px;line-height:1;color:var(--yellow)}
+  .steps b{font-size:18px}
+  .steps p{color:var(--muted);font-size:15px}
+  .join-photo{margin-top:24px;border-radius:var(--r);overflow:hidden}
+  .join-photo img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;object-position:50% 35%}
+
+  /* visit */
+  .visit-grid{display:grid;gap:28px;margin-top:30px}
+  @media (min-width:900px){.visit-grid{grid-template-columns:1fr 1fr}}
+  .hours{width:100%}
+  .hours th,.hours td{padding:12px 0}
+  .hours td{text-align:right}
+  .hours tr.today>*{color:var(--yellow)}
+  .addr{display:grid;gap:14px;align-content:start}
+  .addr address{font-style:normal;font-size:18px;line-height:1.5}
+  .addr .cta-row{margin-top:6px}
+  .visit-photo{border-radius:var(--r);overflow:hidden}
+  .visit-photo img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+
+  footer{border-top:1px solid var(--line);padding:36px 0 40px;color:var(--muted);font-size:14px}
+  footer .wrap{display:grid;gap:14px}
+  footer .row{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+  footer a{color:var(--ink)}
+  .compare{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:600}
+
+  /* phone action bar */
+  .mbar{display:none}
+  @media (max-width:760px){
+    .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(3,1fr);background:#0E0E10;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+    .mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;font-size:13px;font-weight:700;text-decoration:none}
+    .mbar a:first-child{background:var(--yellow);color:var(--yellow-ink)}
+    .mbar svg{width:20px;height:20px}
+    footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+    .top .btn{display:none}
+  }
+
+  /* Message chooser: native modal <dialog>. Facebook/Messenger's in-app browser often won't hand
+     m.me links to the Messenger app, so we offer the app link, the web link and call/text. */
+  .msg{margin:auto;border:1px solid var(--line);padding:0;border-radius:18px;width:min(420px,calc(100dvw - 24px));background:var(--coal);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .msg:modal{overscroll-behavior:contain}
+  .msg::backdrop{background:rgba(0,0,0,.75);overflow:hidden;overscroll-behavior:contain}
+  .msg-inner{padding:24px 22px 22px;display:grid;gap:12px}
+  .msg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .msg h2{font-size:30px}
+  .msg-head p{color:var(--muted);font-size:14px;margin-top:6px}
+  .msg-head form{flex:none}
+  .msg-close{width:40px;height:40px;padding:0;border-radius:50%;border:1px solid #3A3A42;background:var(--panel);color:var(--ink);font-size:18px;font-weight:800;cursor:pointer}
+  .msg .btn{justify-content:center;width:100%;touch-action:manipulation}
+  .msg-note{font-size:14px;background:var(--panel);border-left:3px solid var(--yellow);border-radius:8px;padding:10px 12px;line-height:1.45;display:grid;gap:4px}
+  .msg-note-small{font-size:12px;color:var(--muted)}
+  .msg [hidden]{display:none}
+  @media (max-width:600px){
+    .msg:modal{margin:auto auto 0;width:100dvw;max-width:100dvw;border-radius:18px 18px 0 0;border-width:1px 0 0}
+    .msg-inner{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+  }
+
+  /* lightbox */
+  .lightbox{margin:auto;padding:0;border:0;background:none;max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow:visible}
+  .lightbox:modal{overscroll-behavior:contain}
+  .lightbox::backdrop{background:rgba(0,0,0,.92);overflow:hidden;overscroll-behavior:contain}
+  .lightbox img{max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);width:auto;height:auto;border-radius:10px}
+  .lightbox button{position:absolute;top:10px;right:10px;z-index:1;width:46px;height:46px;border-radius:50%;border:0;background:var(--yellow);color:var(--yellow-ink);font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+
+  /* motion only for people who haven't asked their phone to reduce it */
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-behavior:smooth}
+    @media (hover:hover) and (pointer:fine){.gallery button:hover img{transform:scale(1.04)}}
+    @supports (animation-timeline: view()){
+      .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+      @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Thor's Gym, back to top">
+      <img src="assets/logo-256.webp" width="256" height="256" alt="">
+      <b>Thor's Gym</b>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#programs">Programs</a>
+      <a href="#rates">Rates</a>
+      <a href="#tour">Tour</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-y" href="https://m.me/100087479229671" target="_blank" rel="noopener">Message us</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <picture>
+      <source media="(max-width:700px)" srcset="assets/floor-800.webp">
+      <img src="assets/floor.webp" width="1600" height="860" alt="The Thor's Gym weights floor: rows of plate-loaded machines between bright yellow pillars" fetchpriority="high">
+    </picture>
+    <div class="wrap">
+      <p class="status" id="status" hidden><i></i><span></span></p>
+      <h1>Strong mind, <span>strong body.</span></h1>
+      <p>A fully equipped gym in Butuan City with weights, cardio, Equipment Pilates, Muay Thai and a salt sauna. Everyone is welcome, whatever your level.</p>
+      <div class="cta-row">
+        <a class="btn btn-y" href="https://m.me/100087479229671" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message us</a>
+        <a class="btn btn-ghost" href="#rates">See rates</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Quick info">
+    <div class="wrap">
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Mon to Sat 6 AM to 10 PM<small>Sunday 1 PM to 7 PM</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>1st Level, R.C. Intino Bldg 2<small>North Montilla Blvd, Brgy. Ong Yiu</small></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><a href="tel:+639629662218">0962 966 2218</a><small>Call or text</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="wrap">
+      <p class="kicker">Programs</p>
+      <h2 class="h2">Everything under one roof</h2>
+      <p class="lead">Train on your own, with a coach, or in a class. Members pay lower rates on every service.</p>
+      <div class="svc-grid">
+        <article class="svc wide reveal">
+          <img src="assets/bench-800.webp" srcset="assets/bench-800.webp 800w, assets/bench.webp 1600w" sizes="(min-width:900px) 640px, 100vw" width="1600" height="860" loading="lazy" alt="Benches, racks and plate-loaded machines on the gym floor">
+          <div>
+            <h3>Gym floor</h3>
+            <p>Free weights, dumbbells, plate-loaded and cable machines, plus treadmills, bikes and a stair climber.</p>
+            <p class="price">From ₱230 a session or ₱1,850 a month (members)</p>
+          </div>
+        </article>
+        <article class="svc reveal">
+          <img src="assets/dumbbells-800.webp" width="800" height="430" loading="lazy" alt="Rack of black hex dumbbells">
+          <div>
+            <h3>Personal coach</h3>
+            <p>A coach plans your program and trains with you, whether you are starting out or chasing a new PR.</p>
+            <p class="price">₱3,550 a month</p>
+          </div>
+        </article>
+        <article class="svc reveal">
+          <img src="assets/pilates-studio-800.webp" width="800" height="430" loading="lazy" alt="Pilates studio with reformers, a Cadillac frame and exercise balls on a wood floor">
+          <div>
+            <h3>Equipment Pilates</h3>
+            <p>One-hour reformer sessions in a dedicated studio, up to 8 people per class.</p>
+            <p class="price">₱800 members · ₱1,000 non-members</p>
+          </div>
+        </article>
+        <article class="svc reveal">
+          <img src="assets/boxing-800.webp" width="800" height="430" loading="lazy" alt="Boxing ring with heavy bags and a speed bag">
+          <div>
+            <h3>Muay Thai</h3>
+            <p>Full ring, heavy bags and pads. Monthly training for members.</p>
+            <p class="price">₱3,050 a month (members)</p>
+          </div>
+        </article>
+        <article class="svc reveal">
+          <img src="assets/pilates-reformers-800.webp" width="800" height="430" loading="lazy" alt="Bright studio with mirrors and a row of reformer machines">
+          <div>
+            <h3>Zumba &amp; classes</h3>
+            <p>Dance-fitness sessions, plus special classes like Barre and Step that are announced on the Facebook page.</p>
+            <p class="price">Zumba ₱120 members · ₱150 non-members</p>
+          </div>
+        </article>
+        <article class="svc reveal">
+          <img src="assets/sauna-800.webp" width="800" height="430" loading="lazy" alt="Wood-panelled Himalayan salt sauna room">
+          <div>
+            <h3>Salt sauna</h3>
+            <p>Recover after training in the Himalayan salt sauna. Lockers and shower rooms are on site too.</p>
+            <p class="price">Ask at reception for the rate</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="rates" id="rates">
+    <div class="wrap rates-layout">
+      <div>
+        <p class="kicker">Rates</p>
+        <h2 class="h2">Simple pricing</h2>
+        <p class="lead">Become a member once a year and you get lower rates on the gym, Pilates and classes.</p>
+        <div class="member-card">
+          <p>Annual membership</p>
+          <p class="big">₱500<small>/ year</small></p>
+          <p>Covers the gym and Pilates, and unlocks member rates on every service.</p>
+        </div>
+        <p class="discount"><b>20% off</b><span>monthly rates for students and seniors with a valid ID</span></p>
+      </div>
+      <div>
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="rates-cap">
+          <table>
+            <caption id="rates-cap">Rates in pesos, members vs non-members</caption>
+            <thead><tr><th scope="col">Service</th><th scope="col">Member</th><th scope="col">Non-member</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Gym, monthly</th><td class="y">₱1,850</td><td>₱2,350</td></tr>
+              <tr><th scope="row">Gym, per session</th><td class="y">₱230</td><td>₱300</td></tr>
+              <tr><th scope="row">Personal coach<small>Monthly</small></th><td class="y" colspan="2">₱3,550</td></tr>
+              <tr><th scope="row">Muay Thai<small>Monthly, members only</small></th><td class="y">₱3,050</td><td>–</td></tr>
+              <tr><th scope="row">Pilates<small>Per session · 1 hour · up to 8 people</small></th><td class="y">₱800</td><td>₱1,000</td></tr>
+              <tr><th scope="row">Zumba<small>Per session</small></th><td class="y">₱120</td><td>₱150</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="rate-note">Rates as shared by Thor's Gym, November 2026. Please confirm at reception, as prices can change.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tour">
+    <div class="wrap">
+      <p class="kicker">Take a look</p>
+      <h2 class="h2">Walk the floor</h2>
+      <p class="lead">A quick look inside, from the gym's own walkthrough video.</p>
+      <div class="tour-box">
+        <video id="tourVid" muted playsinline loop preload="none" poster="assets/tour-poster.webp" aria-label="Walkthrough of the Thor's Gym weights floor">
+          <source src="assets/tour-m.mp4" type="video/mp4" media="(max-width:640px)">
+          <source src="assets/tour.mp4" type="video/mp4">
+        </video>
+        <button class="tour-play" id="tourPlay" type="button"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Play the tour</span></button>
+      </div>
+      <div class="gallery" id="gallery">
+        <button type="button"><img src="assets/neon-strength-800.webp" data-full="assets/neon-strength.webp" width="800" height="430" loading="lazy" alt="Yellow neon sign reading Strength Demands Worth beside the treadmills"></button>
+        <button type="button"><img src="assets/treadmills-800.webp" data-full="assets/treadmills.webp" width="800" height="430" loading="lazy" alt="Row of treadmills"></button>
+        <button type="button"><img src="assets/bikes-800.webp" data-full="assets/bikes.webp" width="800" height="430" loading="lazy" alt="Exercise bikes facing the gym floor"></button>
+        <button type="button"><img src="assets/plates-800.webp" data-full="assets/plates.webp" width="800" height="430" loading="lazy" alt="Weight plates on a rack"></button>
+        <button type="button"><img src="assets/pilates-cadillac-800.webp" data-full="assets/pilates-cadillac.webp" width="800" height="430" loading="lazy" alt="Pilates Cadillac frame and reformers"></button>
+        <button type="button"><img src="assets/neon-calories-800.webp" data-full="assets/neon-calories.webp" width="800" height="430" loading="lazy" alt="Neon sign reading Give your calories one last chance"></button>
+        <button type="button"><img src="assets/reception-800.webp" data-full="assets/reception.webp" width="800" height="533" loading="lazy" alt="Reception desk with the Thor's Gym logo and yellow steel shelving"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="rates">
+    <div class="wrap">
+      <p class="kicker">How to join</p>
+      <h2 class="h2">Sign up in person</h2>
+      <p class="lead">Registration is done at the front desk, where the team helps you with everything.</p>
+      <ol class="steps">
+        <li><b>Visit the reception</b><p>1st Level, R.C. Intino Building 2. Bring a valid ID if you are a student or senior.</p></li>
+        <li><b>Fill out the forms</b><p>The staff help you with the forms and set up your biometrics for entry.</p></li>
+        <li><b>Pick your plan</b><p>Annual membership is ₱500. Then choose monthly or per session, whatever fits your schedule.</p></li>
+      </ol>
+      <figure class="join-photo"><img src="assets/register-800.webp" srcset="assets/register-800.webp 800w, assets/register.webp 1600w" sizes="(min-width:1180px) 1180px, 100vw" width="1600" height="1066" loading="lazy" alt="A staff member helps a new member at the biometric scanner"></figure>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <p class="kicker">Visit</p>
+      <h2 class="h2">Find us on Montilla</h2>
+      <div class="visit-grid">
+        <div class="addr">
+          <address>Thor's Gym<br>1st Level, R.C. Intino Building 2<br>North Montilla Boulevard, Brgy. Ong Yiu<br>Butuan City 8600</address>
+          <table class="hours" aria-label="Opening hours">
+            <tbody>
+              <tr data-days="1,2,3,4,5,6"><th scope="row">Monday to Saturday</th><td>6:00 AM to 10:00 PM</td></tr>
+              <tr data-days="0"><th scope="row">Sunday</th><td>1:00 PM to 7:00 PM</td></tr>
+            </tbody>
+          </table>
+          <div class="cta-row">
+            <a class="btn btn-y" href="https://www.google.com/maps/dir/?api=1&amp;destination=8.9567744,125.5401403" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-ghost" href="tel:+639629662218">Call 0962 966 2218</a>
+            <a class="btn btn-ghost" href="https://m.me/100087479229671" target="_blank" rel="noopener">Message us</a>
+          </div>
+        </div>
+        <figure class="visit-photo" style="margin:0"><img src="assets/reception-800.webp" srcset="assets/reception-800.webp 800w, assets/reception.webp 1600w" sizes="(min-width:900px) 560px, 100vw" width="1600" height="1066" loading="lazy" alt="The Thor's Gym entrance and reception"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a href="https://www.facebook.com/thorsgymbutuan" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/thorsgym.butuan" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:thorsgym2022@gmail.com">thorsgym2022@gmail.com</a>
+    </div>
+    <div class="row">
+      <span>© <span id="yr">2026</span> Thor's Gym Butuan · Open since November 18, 2022</span>
+      <a class="compare" href="v2/">See Option B →</a>
+    </div>
+    <p>Concept website. <a href="https://kendamin.github.io/" target="_blank" rel="noopener">Watermark by Ken Abuda</a></p>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="https://m.me/100087479229671" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message</a>
+  <a href="tel:+639629662218"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=8.9567744,125.5401403" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+</nav>
+
+<dialog class="msg" id="msgDialog" closedby="any" aria-labelledby="msg-title">
+  <div class="msg-inner">
+    <div class="msg-head">
+      <div><h2 id="msg-title">Message Thor's Gym</h2><p>Ask about rates, classes or how to sign up.</p></div>
+      <form method="dialog"><button class="msg-close" aria-label="Close">✕</button></form>
+    </div>
+    <!-- opens the Messenger app directly (phones only; shown by the script) -->
+    <a class="btn btn-y" id="msgApp" hidden href="fb-messenger://user-thread/100087479229671">Open Messenger app</a>
+    <a class="btn btn-ghost" href="https://m.me/100087479229671" target="_blank" rel="noopener">Message on Facebook</a>
+    <a class="btn btn-ghost" href="tel:+639629662218">Call 0962 966 2218</a>
+    <a class="btn btn-ghost" href="sms:+639629662218">Send a text</a>
+    <div class="msg-note" id="msgNote" hidden>
+      <p>See <strong>"Get the Messenger app"</strong>? Tap <strong>Open in Messenger</strong> below it instead.</p>
+      <p class="msg-note-small">Still not opening? Tap <strong>•••</strong> and choose <strong>Open in browser</strong>.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="lightbox" id="lightbox" closedby="any" aria-label="Photo viewer">
+  <form method="dialog"><button aria-label="Close photo" autofocus>✕</button></form>
+  <img id="lbImg" alt="">
+</dialog>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // ---- Open now / closed, in Philippine time (Mon–Sat 6–22, Sun 13–19)
+  (() => {
+    const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Manila", weekday: "short", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date());
+    const get = t => parts.find(p => p.type === t)?.value;
+    const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(get("weekday"));
+    const mins = (parseInt(get("hour"), 10) % 24) * 60 + parseInt(get("minute"), 10);
+    const [open, close] = day === 0 ? [13 * 60, 19 * 60] : [6 * 60, 22 * 60];
+    const el = document.getElementById("status");
+    const isOpen = mins >= open && mins < close;
+    el.classList.add(isOpen ? "open" : "closed");
+    el.querySelector("span").textContent = isOpen
+      ? `Open now · until ${day === 0 ? "7 PM" : "10 PM"}`
+      : `Closed now · opens ${mins < open ? (day === 0 ? "1 PM today" : "6 AM today") : (day === 6 ? "1 PM tomorrow" : "6 AM tomorrow")}`;
+    el.hidden = false;
+    document.querySelector(`.hours tr[data-days*="${day}"]`)?.classList.add("today");
+  })();
+
+  // ---- Message chooser: every m.me button opens the chooser instead of jumping straight to Facebook.
+  // Without JavaScript the plain m.me links still work.
+  const msgDialog = document.getElementById("msgDialog");
+  const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  const inFacebookApp = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(navigator.userAgent);
+  if (isPhone) document.getElementById("msgApp").hidden = false;          // app link only works on phones
+  if (inFacebookApp) document.getElementById("msgNote").hidden = false;  // tip only where the problem happens
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="https://m.me/"]');
+    if (!a || msgDialog.contains(a)) return;
+    e.preventDefault();
+    msgDialog.showModal();
+    msgDialog.querySelector(".btn:not([hidden])")?.focus();         // start on the main action, not ✕
+  });
+  const lightDismiss = d => {                                          // Safari: tap outside to close
+    if ("closedBy" in HTMLDialogElement.prototype) return;
+    let downOutside = false;
+    const outside = e => { const r = d.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    d.addEventListener("pointerdown", e => { downOutside = outside(e); });
+    d.addEventListener("pointerup", e => { if (downOutside && outside(e)) d.close(); });
+  };
+  lightDismiss(msgDialog);
+
+  // ---- photo viewer: native <dialog> (focus, Esc, back gesture and focus return are built in)
+  const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg");
+  lightDismiss(lb);
+  document.getElementById("gallery").addEventListener("click", e => {
+    const img = e.target.closest("button")?.querySelector("img"); if (!img) return;
+    lbImg.src = img.dataset.full || img.currentSrc; lbImg.alt = img.alt;
+    lb.showModal();
+  });
+
+  // ---- tour video: nothing downloads until the visitor asks for it
+  const vid = document.getElementById("tourVid"), play = document.getElementById("tourPlay");
+  play.addEventListener("click", () => {
+    vid.controls = true; play.hidden = true;
+    vid.play().catch(() => {});
+  });
+</script>
+</body>
+</html>

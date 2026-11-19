@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thor's Gym Butuan · Load the bar</title>
+<meta name="description" content="Thor's Gym, Butuan City: weights, cardio, Equipment Pilates, Muay Thai, Zumba and a salt sauna on North Montilla Blvd. Open Monday to Saturday 6 AM to 10 PM.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#111112">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="../assets/logo-512.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,700;125,800;125,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root{
+    --sc-canvas:#111112; --sc-surface:#1C1C1E;
+    --sc-ink:#F3F1EA; --sc-ink-soft:#BDB9AE;
+    --sc-accent:#F5D90A; --sc-accent-ink:#121110;
+    --sc-font-display:"Archivo",system-ui,sans-serif;
+    --sc-font-text:"Archivo",system-ui,sans-serif;
+    --yellow:#F5D90A; --black:#111112; --concrete:#2B2B2D;
+    --bar-h:64px; --strip-h:30px;
+    color-scheme:dark;
+  }
+  html{scroll-padding-top:calc(var(--bar-h) + var(--strip-h))}
+  body{background:var(--black);overflow-x:clip}
+  a{color:inherit}
+  img{max-width:100%;height:auto}
+  :focus-visible{outline:3px solid var(--sc-accent);outline-offset:3px;border-radius:4px}
+  .skip{position:absolute;left:12px;top:-80px;z-index:200;background:var(--yellow);color:var(--black);padding:10px 14px;border-radius:8px;font-weight:700}
+  .skip:focus{top:12px}
+
+  /* ---- type: one family, width does the shouting ---- */
+  .x{font-family:var(--sc-font-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.92;margin:0;text-wrap:balance}
+  .x--hero{font-size:clamp(2.5rem,1rem + 3.9vw,5.4rem);font-stretch:112%}
+  .x--lg{font-size:clamp(2.4rem,1.2rem + 5.2vw,5.6rem)}
+  .x--md{font-size:clamp(1.9rem,1.1rem + 3.4vw,3.6rem)}
+  .lab{font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin:0}
+  .price{font-weight:800;font-stretch:125%;font-size:clamp(1.15rem,1rem + .6vw,1.5rem);margin:0}
+  .copy p:not(.lab):not(.price){max-width:46ch;color:var(--sc-ink-soft);font-size:clamp(1rem,.95rem + .25vw,1.15rem);line-height:1.6;margin:0}
+
+  /* ---- grounds: hard cuts, never interpolated ---- */
+  .g-black{background:var(--black);--sc-ink:#F3F1EA;--sc-ink-soft:#BDB9AE;color:var(--sc-ink)}
+  .g-yellow{background:var(--yellow);--sc-ink:#121110;--sc-ink-soft:#3B3618;--sc-accent:#121110;color:var(--sc-ink)}
+  .g-concrete{background:var(--concrete);--sc-ink:#F3F1EA;--sc-ink-soft:#C9C5BA;color:var(--sc-ink)}
+  .g-yellow ::selection{background:var(--black);color:var(--yellow)}
+  .g-black .accent,.g-concrete .accent{color:var(--yellow)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 22px;border-radius:6px;font:inherit;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .15s var(--sc-ease-out),color .15s var(--sc-ease-out),transform .12s var(--sc-ease-out)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn:active{transform:translateY(1px)}
+  .btn-y{background:var(--yellow);color:var(--black)}
+  .btn-k{background:var(--black);color:var(--yellow)}
+  .btn-o{border-color:currentColor;background:transparent}
+  @media (hover:hover) and (pointer:fine){
+    .btn-y:hover{background:#FFE640}
+    .btn-k:hover{background:#26262A}
+    .btn-o:hover{background:color-mix(in oklab,currentColor 12%,transparent)}
+  }
+
+  /* =========================== CHROME: the loud bar =========================== */
+  .bar{position:fixed;inset:0 0 auto;z-index:80;background:var(--black);border-bottom:2px solid var(--yellow)}
+  .bar__row{height:var(--bar-h);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding-inline:var(--sc-gutter)}
+  .bar__mark{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .bar__mark img{width:46px;height:46px}
+  .bar__mark b{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:1.25rem;letter-spacing:.01em;color:var(--sc-ink)}
+  .bar .btn{min-height:44px;padding:8px 16px;font-size:.95rem;white-space:nowrap}
+  .bar.flash{animation:flash .7s var(--sc-ease-out)}
+  @keyframes flash{0%{background:var(--yellow)}100%{background:var(--black)}}
+
+  /* the signature: a barbell that loads a plate for every station you pass */
+  .bb{justify-self:center;display:grid;justify-items:center;gap:0;align-self:center}
+  .bb__rig{display:flex;align-items:center;height:34px;transition:transform .35s var(--sc-ease-out)}
+  .bb__side{display:flex;align-items:center;gap:2px;width:84px}
+  .bb__side--l{flex-direction:row-reverse}
+  .bb__bar{width:120px;height:4px;background:linear-gradient(#D7D7DA,#8E8E93);border-radius:2px;position:relative}
+  .bb__bar::before,.bb__bar::after{content:"";position:absolute;top:-5px;width:6px;height:14px;background:#B9B9BE;border-radius:1px}
+  .bb__bar::before{left:-3px}.bb__bar::after{right:-3px}
+  .plate{display:block;width:9px;height:var(--h);border-radius:2px;background:var(--c);box-shadow:inset -2px 0 0 rgba(0,0,0,.25);opacity:.14;transform:translateX(var(--off,10px));transition:opacity .22s var(--sc-ease-out),transform .28s var(--sc-ease-out);text-decoration:none;flex:none}
+  .bb__side--l .plate{--off:-10px}
+  .plate.on{opacity:1;transform:none}
+  .plate:focus-visible{outline-offset:2px}
+  .bb__read{margin:0;line-height:1.2;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .bb__read b{color:var(--yellow)}
+  .bar.locked .bb__rig{transform:translateY(-6px)}
+  .bar.locked .bb__read{color:var(--yellow)}
+  @media (hover:hover) and (pointer:fine){.plate:hover{opacity:1;filter:brightness(1.2)}}
+
+  .strip{height:var(--strip-h);overflow:hidden;background:var(--yellow);color:var(--black);display:flex;align-items:center;border-top:1px solid #000}
+  .strip__track{display:flex;flex:none;white-space:nowrap;font-weight:800;font-stretch:125%;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+  .strip__track span{padding-inline:18px}
+  .strip__track span::after{content:"✦";margin-left:36px;font-size:.7rem}
+
+  @media (max-width:700px){
+    :root{--bar-h:58px}
+    .bar__row{gap:8px}
+    .bar__mark b{display:none}
+    .bar__mark img{width:40px;height:40px}
+    .bb__side{width:42px;gap:1px}
+    .bb__bar{width:50px}
+    .plate{width:4px}
+    .bb__read{font-size:.58rem;letter-spacing:.08em}
+    .bar .btn{padding:8px 10px;font-size:.74rem;min-height:40px;white-space:nowrap}
+  }
+
+  /* ================================ HERO ================================ */
+  .hero{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;background:var(--black)}
+  .plane{position:absolute;pointer-events:none;will-change:transform}
+  .plane--back{inset:-6% 0 auto;height:112%}
+  .plane--back img{width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(1.1)}
+  .plane--type{left:0;right:0;top:calc(var(--bar-h) + var(--strip-h) + 2vh);text-align:center;font-weight:900;font-stretch:125%;font-size:min(23vw,30vh);line-height:.8;letter-spacing:-.03em;color:var(--yellow);opacity:.92;user-select:none}
+  .plane--subject{width:min(38vw,64vh,560px);right:6vw;top:50%;margin-top:calc(min(38vw,64vh,560px) / -2 + 6vh)}
+  .plane--subject img{width:100%;height:auto;max-width:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+  .plane--front{width:min(26vw,340px);right:-2vw;bottom:-3vh;mix-blend-mode:screen;opacity:.95}
+  .plane--front img{width:100%;height:auto;max-width:none}
+  .hero__floor{position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(to top,var(--black),rgba(17,17,18,0));z-index:4;pointer-events:none}
+  .hero__copy{position:absolute;z-index:5;left:var(--sc-gutter);bottom:clamp(2.5rem,9vh,6rem);max-width:min(40rem,48vw);display:grid;gap:18px}
+  .hero__copy p{color:#E3E0D7;font-size:clamp(1.02rem,.95rem + .35vw,1.25rem);line-height:1.55;max-width:40ch;margin:0}
+  .hero__scrim{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(120% 90% at 0% 100%,rgba(17,17,18,.85) 0%,rgba(17,17,18,.55) 35%,rgba(17,17,18,0) 65%)}
+  .row{display:flex;flex-wrap:wrap;gap:12px}
+  .hero .plane--subject img{opacity:0;transform:scale(.95);transition:opacity .6s var(--sc-ease-out),transform .8s var(--sc-ease-out)}
+  .hero.ready .plane--subject img{opacity:1;transform:none}
+  @media (max-width:860px){
+    .hero{min-height:640px}
+    .plane--type{top:calc(var(--bar-h) + var(--strip-h) + 3vh);font-size:30vw}
+    .plane--subject{width:min(58vw,34svh,340px);left:50%;right:auto;top:calc(var(--bar-h) + var(--strip-h) + 4svh);margin:0 0 0 calc(min(58vw,34svh,340px) / -2)}
+    .plane--front{display:none}
+    .hero__copy{max-width:none;right:var(--sc-gutter);bottom:clamp(1.5rem,5vh,3rem)}
+    .hero__scrim{background:linear-gradient(to top,rgba(17,17,18,.95) 0%,rgba(17,17,18,.7) 30%,rgba(17,17,18,0) 55%)}
+  }
+
+  /* ================================ CUTS ================================ */
+  .cut{position:relative}
+  .pad{padding:clamp(3.5rem,8vw,7rem) var(--sc-gutter)}
+  .cut__grid{display:grid;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;max-width:var(--sc-maxw);margin-inline:auto}
+  @media (min-width:900px){
+    .cut__grid--r{grid-template-columns:1.25fr 1fr}
+    .cut__grid--l{grid-template-columns:1fr 1.25fr}
+    .cut__grid--l .copy{order:2}
+  }
+  .copy{display:grid;gap:16px;align-content:start}
+  .shot{margin:0;position:relative}
+  .shot img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:4px}
+  .shot--tall img{aspect-ratio:4/5}
+  .shot figcaption{position:absolute;left:12px;bottom:12px;background:var(--black);color:var(--yellow);font-weight:800;font-stretch:125%;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px}
+
+  /* hours punch */
+  .punch{min-height:62svh;display:grid;align-content:center;gap:22px}
+  .punch .x{font-size:clamp(2.8rem,1.4rem + 7vw,8rem)}
+  .punch p{font-weight:700;font-size:clamp(1.05rem,1rem + .4vw,1.35rem);max-width:40ch}
+
+  /* scrub */
+  #floor .sc-copy{max-width:min(36rem,90vw)}
+  .floor-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(100% 70% at 0% 100%,rgba(17,17,18,.88) 0%,rgba(17,17,18,.62) 45%,rgba(17,17,18,0) 78%)}
+  @media (max-width:860px){.floor-scrim{background:linear-gradient(to top,rgba(17,17,18,.92) 0%,rgba(17,17,18,.8) 32%,rgba(17,17,18,0) 62%)}}
+  #floor .sc-copy p{color:#E3E0D7;margin-top:14px;font-size:clamp(1rem,.95rem + .3vw,1.2rem);max-width:36ch}
+
+  /* classes cut */
+  .classes{display:grid;gap:22px;max-width:var(--sc-maxw);margin-inline:auto}
+  .classes ul{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:3px solid currentColor}
+  .classes li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:16px 0;border-bottom:3px solid currentColor}
+  .classes li b{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(1.4rem,1rem + 2.2vw,2.6rem);line-height:1}
+  .classes li span{font-weight:700;text-align:right}
+
+  /* quiet beat + story */
+  .quiet{min-height:70svh;display:grid;place-items:center;text-align:center}
+  .quiet p{font-size:clamp(1.1rem,1rem + .5vw,1.4rem);color:var(--sc-ink-soft);margin:0}
+  .story{max-width:62rem;margin-inline:auto;display:grid;gap:26px}
+  .story blockquote{margin:0}
+  .story blockquote p{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2.4rem,1.2rem + 6vw,6.4rem);line-height:.92;color:var(--yellow);margin:0}
+  .story blockquote footer{margin-top:14px;color:var(--sc-ink-soft);font-weight:700}
+  .story .date{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:end;border-top:2px solid var(--yellow);padding-top:22px}
+  .story .date b{font-weight:900;font-stretch:125%;font-size:clamp(2rem,1.2rem + 3vw,3.6rem);line-height:1;color:var(--sc-ink)}
+  .story .date span{color:var(--sc-ink-soft);max-width:34ch}
+
+  /* rates */
+  .rates{max-width:var(--sc-maxw);margin-inline:auto;display:grid;gap:clamp(1.5rem,4vw,3rem)}
+  @media (min-width:960px){.rates{grid-template-columns:.9fr 1.3fr;align-items:start}}
+  .member{background:var(--black);color:var(--yellow);padding:clamp(1.4rem,3vw,2.2rem);display:grid;gap:8px;border-radius:4px}
+  .member .big{font-weight:900;font-stretch:125%;font-size:clamp(4rem,2.5rem + 6vw,7.5rem);line-height:.85;margin:0;font-variant-numeric:tabular-nums}
+  .copy .member p{margin:0;color:#F3F1EA;font-weight:600;max-width:none}
+  .copy .member .big{color:var(--yellow)}
+  .copy .member .lab{color:var(--yellow)}
+  .tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  .tbl caption{text-align:left;font-weight:700;padding-bottom:10px}
+  .tbl th,.tbl td{text-align:left;padding:14px 8px 14px 0;border-bottom:2px solid currentColor;vertical-align:top}
+  .tbl thead th{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+  .tbl tbody th{font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:clamp(.98rem,.9rem + .35vw,1.2rem)}
+  .tbl tbody th small{display:block;font-stretch:100%;text-transform:none;font-weight:600;font-size:.82rem;opacity:.8;margin-top:2px}
+  .tbl td{font-weight:800;white-space:nowrap;font-size:clamp(1rem,.9rem + .4vw,1.25rem)}
+  .tbl td:last-child{padding-right:0}
+  .note{font-weight:600;font-size:.92rem;margin:0}
+  .off{display:flex;align-items:center;gap:14px;font-weight:700;margin:0}
+  .off b{font-weight:900;font-stretch:125%;font-size:2.2rem;line-height:1}
+
+  /* visit */
+  .visit{max-width:var(--sc-maxw);margin-inline:auto;display:grid;gap:clamp(1.5rem,4vw,3rem)}
+  @media (min-width:900px){.visit{grid-template-columns:1fr 1fr;align-items:center}}
+  .visit address{font-style:normal;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);line-height:1.5}
+  .hours{display:grid;gap:0;border-top:2px solid var(--yellow)}
+  .hours div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #3A3A3E;font-weight:700}
+  .hours div.today{color:var(--yellow)}
+  .steps{margin:0;padding-left:1.2em;color:var(--sc-ink-soft);display:grid;gap:6px}
+
+  /* close: abrupt, full bleed */
+  .close{min-height:100svh;display:grid;grid-template-rows:1fr auto}
+  .close__main{display:grid;align-content:center;gap:26px;padding:calc(var(--bar-h) + var(--strip-h) + 2rem) var(--sc-gutter) 3rem;max-width:var(--sc-maxw);margin-inline:auto;width:100%}
+  .close .x{font-size:clamp(3.4rem,1.5rem + 10vw,11rem)}
+  .foot{background:var(--black);color:#BDB9AE;padding:22px var(--sc-gutter) calc(22px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;font-size:.9rem}
+  .foot a{color:#F3F1EA}
+  .foot .opt{border:1px solid #3A3A3E;border-radius:999px;padding:6px 14px;text-decoration:none;font-weight:700}
+
+  /* Message chooser: native modal <dialog>. Facebook/Messenger's in-app browser often won't hand
+     m.me links to the Messenger app, so we offer the app link, the web link and call/text. */
+  .msg{margin:auto;border:2px solid var(--yellow);padding:0;border-radius:10px;width:min(420px,calc(100dvw - 24px));background:#1C1C1E;color:#F3F1EA;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .msg:modal{overscroll-behavior:contain}
+  .msg::backdrop{background:rgba(0,0,0,.78);overflow:hidden;overscroll-behavior:contain}
+  .msg-inner{padding:24px 22px 22px;display:grid;gap:12px}
+  .msg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .msg h2{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:1.6rem;line-height:1;margin:0}
+  .msg-head p{color:#BDB9AE;font-size:14px;margin:6px 0 0}
+  .msg-head form{flex:none}
+  .msg-close{width:40px;height:40px;padding:0;border-radius:50%;border:1px solid #3A3A42;background:#2A2A2E;color:#F3F1EA;font-size:18px;font-weight:800;cursor:pointer}
+  .msg .btn{width:100%;touch-action:manipulation}
+  .msg .btn-o{color:#F3F1EA;border-color:#55555C}
+  .msg-note{font-size:14px;background:#2A2A2E;border-left:3px solid var(--yellow);border-radius:6px;padding:10px 12px;line-height:1.45;display:grid;gap:4px}
+  .msg-note p{margin:0}
+  .msg-note-small{font-size:12px;color:#BDB9AE}
+  .msg [hidden]{display:none}
+  @media (max-width:600px){
+    .msg:modal{margin:auto auto 0;width:100dvw;max-width:100dvw;border-radius:14px 14px 0 0;border-width:2px 0 0}
+    .msg-inner{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+  }
+
+  /* motion only when wanted */
+  @media (prefers-reduced-motion: no-preference){
+    .strip__track{animation:marquee 38s linear infinite}
+    .strip:hover .strip__track{animation-play-state:paused}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .plate,.bb__rig{transition:none}
+    .bar.locked .bb__rig{transform:none}
+    .bar.flash{animation:none}
+    .hero .plane--subject img{transition:opacity .3s;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar">
+  <div class="bar__row">
+    <a class="bar__mark" href="#top" aria-label="Thor's Gym, back to top"><img src="../assets/logo-256.webp" width="256" height="256" alt=""><b>Thor's Gym</b></a>
+    <nav class="bb" aria-label="Sections: every plate jumps to a station">
+      <div class="bb__rig" id="rig">
+        <div class="bb__side bb__side--l" aria-hidden="true" id="sideL"></div>
+        <div class="bb__bar"></div>
+        <div class="bb__side bb__side--r" id="sideR"></div>
+      </div>
+      <p class="bb__read" aria-hidden="true" id="read"><b>20</b> kg on the bar</p>
+    </nav>
+    <a class="btn btn-y" href="https://m.me/100087479229671" target="_blank" rel="noopener">Start today</a>
+  </div>
+  <div class="strip" aria-label="Opening hours and contact">
+    <div class="strip__track">
+      <span>Mon to Sat 6 AM to 10 PM</span><span>Sunday 1 PM to 7 PM</span><span>1st Level, R.C. Intino Bldg 2, North Montilla Blvd</span><span>Call 0962 966 2218</span><span>Annual membership ₱500</span>
+      <span aria-hidden="true">Mon to Sat 6 AM to 10 PM</span><span aria-hidden="true">Sunday 1 PM to 7 PM</span><span aria-hidden="true">1st Level, R.C. Intino Bldg 2, North Montilla Blvd</span><span aria-hidden="true">Call 0962 966 2218</span><span aria-hidden="true">Annual membership ₱500</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO: four planes, unpinned. Floor (back), the word (behind), Thor (subject), the gym's own neon (front light) -->
+  <section class="hero" id="top">
+    <div class="plane plane--back" data-depth="0.42">
+      <picture>
+        <source media="(max-width:860px)" srcset="../assets/floor-800.webp">
+        <img src="../assets/floor.webp" width="1600" height="860" alt="" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="plane plane--type" data-depth="0.26" aria-hidden="true">THOR'S</div>
+    <div class="plane plane--subject" data-depth="0.12" data-lean="14">
+      <img id="badge" src="../assets/logo-512.webp" width="512" height="512" alt="Thor's Gym logo: Thor lifting two hammers over his head">
+    </div>
+    <div class="plane plane--front" data-depth="-0.2" data-lean="-22" aria-hidden="true">
+      <img src="assets/neon-plane.webp" width="600" height="454" alt="">
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__floor" aria-hidden="true"></div>
+    <div class="hero__copy">
+      <h1 class="x x--hero">Strong mind,<br><span class="accent">strong body.</span></h1>
+      <p>Butuan City's fully equipped gym on North Montilla. Weights, cardio, Pilates, Muay Thai and a salt sauna, for every level.</p>
+      <div class="row">
+        <a class="btn btn-y" href="https://m.me/100087479229671" target="_blank" rel="noopener">Start today</a>
+        <a class="btn btn-o" href="#rates" style="color:#F3F1EA">See rates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS: one screen of yellow -->
+  <section class="cut g-yellow pad" aria-labelledby="h-hours">
+    <div class="punch cut__grid" style="grid-template-columns:1fr">
+      <h2 class="x" id="h-hours" data-sc-in>Open at 6 AM.<br>Lights off at 10.</h2>
+      <p data-sc-in>Monday to Saturday. Sundays from 1 PM to 7 PM. Open since November 18, 2022.</p>
+    </div>
+  </section>
+
+  <!-- THE FLOOR: the only scrub, short -->
+  <section class="cut" id="floor" data-plate="floor" data-sc-act="scrub" data-sc-span="1.3" aria-labelledby="h-floor">
+    <div data-sc-stage>
+      <picture>
+        <source media="(max-width:860px)" srcset="assets/floor-poster-m.webp">
+        <img class="sc-stage__poster" src="assets/floor-poster.webp" width="1600" height="860" alt="">
+      </picture>
+      <video data-sc-scrub data-sc-src="assets/floor.mp4" data-sc-src-mobile="assets/floor-m.mp4" muted playsinline aria-hidden="true"></video>
+      <div class="sc-scrim sc-scrim--lead" aria-hidden="true"></div>
+      <div class="floor-scrim" aria-hidden="true"></div>
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0 0.92 0">
+        <h2 class="x x--lg" id="h-floor">The floor.</h2>
+        <p>Plate-loaded machines, cable stations, racks and benches, between the yellow pillars. This is the gym's own walkthrough.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTH -->
+  <section class="cut g-black pad" id="strength" data-plate="strength" data-sc-act="flow" aria-labelledby="h-strength">
+    <div class="cut__grid cut__grid--r">
+      <figure class="shot" data-sc-reveal="left" data-sc-reveal-at="0.12 0.42">
+        <img src="../assets/plates-800.webp" srcset="../assets/plates-800.webp 800w, ../assets/plates.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="Bumper plates loaded on a rack">
+        <figcaption>Strength</figcaption>
+      </figure>
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-strength">Load it heavy.</h2>
+        <p>Free weights, a full dumbbell rack, barbells, benches and plate-loaded machines for every muscle group.</p>
+        <p class="price accent">Gym ₱230 a session · ₱1,850 a month</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDIO -->
+  <section class="cut g-concrete pad" id="cardio" data-plate="cardio" data-sc-act="flow" aria-labelledby="h-cardio">
+    <div class="cut__grid cut__grid--l">
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-cardio">Strength demands worth.</h2>
+        <p>That's the neon over the treadmills. Bikes, treadmills and a stair climber face the floor, so you're never running at a wall.</p>
+      </div>
+      <figure class="shot" data-sc-reveal="right" data-sc-reveal-at="0.12 0.42">
+        <img src="../assets/neon-strength-800.webp" srcset="../assets/neon-strength-800.webp 800w, ../assets/neon-strength.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="Yellow neon sign reading Strength Demands Worth, with treadmills on both sides">
+      </figure>
+    </div>
+  </section>
+
+  <!-- PILATES: the one iris -->
+  <section class="cut g-yellow pad" id="pilates" data-plate="pilates" data-sc-act="flow" aria-labelledby="h-pilates">
+    <div class="cut__grid cut__grid--r">
+      <figure class="shot" data-sc-reveal="iris" data-sc-reveal-at="0.1 0.45">
+        <img src="../assets/pilates-studio-800.webp" srcset="../assets/pilates-studio-800.webp 800w, ../assets/pilates-studio.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="Pilates studio with reformers, a Cadillac frame and exercise balls on a wood floor">
+      </figure>
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <p class="lab">Equipment Pilates</p>
+        <h2 class="x x--md" id="h-pilates">A full Pilates studio, inside the gym.</h2>
+        <p>Reformers, a Cadillac and chairs in their own bright room. One-hour sessions, up to 8 people, so the instructor sees everyone.</p>
+        <p class="price">₱800 members · ₱1,000 non-members</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUAY THAI -->
+  <section class="cut g-black pad" id="muaythai" data-plate="muaythai" data-sc-act="flow" aria-labelledby="h-mt">
+    <div class="cut__grid cut__grid--l">
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-mt">Step into the ring.</h2>
+        <p>A full boxing ring, heavy bags, a speed bag and standing bags. Muay Thai training runs monthly for members.</p>
+        <p class="price accent">₱3,050 a month (members)</p>
+      </div>
+      <figure class="shot" data-sc-reveal="up" data-sc-reveal-at="0.12 0.42">
+        <img src="../assets/boxing-800.webp" srcset="../assets/boxing-800.webp 800w, ../assets/boxing.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="Boxing ring with red ropes, heavy bags and standing bags">
+      </figure>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section class="cut g-yellow pad" id="classes" data-plate="classes" data-sc-act="flow" aria-labelledby="h-classes">
+    <div class="classes">
+      <h2 class="x x--lg" id="h-classes" data-sc-in>Classes.</h2>
+      <ul data-sc-in data-sc-stagger="50">
+        <li><b>Zumba</b><span>₱120 members · ₱150 non-members</span></li>
+        <li><b>Barre</b><span>Announced on Facebook</span></li>
+        <li><b>Step dance</b><span>Announced on Facebook</span></li>
+      </ul>
+      <p class="note" data-sc-in>Special classes run on set dates with limited slots. Follow <a href="https://www.facebook.com/thorsgymbutuan" target="_blank" rel="noopener">the Facebook page</a> and message to reserve.</p>
+    </div>
+  </section>
+
+  <!-- SAUNA -->
+  <section class="cut g-concrete pad" id="sauna" data-plate="sauna" data-sc-act="flow" aria-labelledby="h-sauna">
+    <div class="cut__grid cut__grid--r">
+      <figure class="shot" data-sc-reveal="down" data-sc-reveal-at="0.12 0.42">
+        <img src="../assets/sauna-800.webp" srcset="../assets/sauna-800.webp 800w, ../assets/sauna.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="Wood-panelled Himalayan salt sauna">
+      </figure>
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-sauna">Then sit in the heat.</h2>
+        <p>A Himalayan salt sauna to recover after training, with lockers and shower rooms next door. Ask the front desk for the sauna rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH -->
+  <section class="cut g-black pad" id="coach" data-plate="coach" data-sc-act="flow" aria-labelledby="h-coach">
+    <div class="cut__grid cut__grid--l">
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-coach">Bring a coach.</h2>
+        <p>A personal coach builds your program and trains with you, from your first week to your next personal record.</p>
+        <p class="price accent">₱3,550 a month</p>
+      </div>
+      <figure class="shot" data-sc-reveal="left" data-sc-reveal-at="0.12 0.42">
+        <img src="../assets/dumbbells-800.webp" srcset="../assets/dumbbells-800.webp 800w, ../assets/dumbbells.webp 1600w" sizes="(min-width:900px) 55vw, 100vw" width="1600" height="860" loading="lazy" alt="A long rack of black dumbbells">
+      </figure>
+    </div>
+  </section>
+
+  <!-- QUIET BEAT (authored silence) -->
+  <section class="cut g-black quiet pad" aria-label="Pause">
+    <p data-sc-in>The bar is loaded. Here's why the gym exists.</p>
+  </section>
+
+  <!-- STORY: the peak. The barbell locks out in the chrome. -->
+  <section class="cut g-black pad" id="story" aria-labelledby="h-story">
+    <div class="story">
+      <h2 class="lab accent" id="h-story" data-sc-in>The story</h2>
+      <p data-sc-in style="font-size:clamp(1.1rem,1rem + .5vw,1.4rem);line-height:1.55;max-width:48ch;color:var(--sc-ink-soft);margin:0">Since college, Ali dreamed of a gym of his own: fully equipped, healthy, and open to everyone regardless of fitness level. Every time he shared the dream, the answer was the same.</p>
+      <blockquote data-sc-in>
+        <p>Puhon, in God's perfect time.</p>
+        <footer>From the gym's 4th anniversary letter</footer>
+      </blockquote>
+      <div class="date" data-sc-in>
+        <b>Nov 18, 2022</b>
+        <span>The doors opened. The name comes from a shared love of Nordic and Viking stories about strength and courage.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATES: no act, so the real ₱500 counts once on entry -->
+  <section class="cut g-yellow pad" id="rates" aria-labelledby="h-rates">
+    <div class="rates">
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--lg" id="h-rates">The rates.</h2>
+        <div class="member">
+          <p class="lab">Annual membership</p>
+          <p class="big">₱<span data-sc-count="0 500">500</span></p>
+          <p>A year of member rates. Covers the gym and Pilates.</p>
+        </div>
+        <p class="off"><b>20%</b>off monthly rates for students and seniors with a valid ID</p>
+      </div>
+      <div data-sc-in>
+        <table class="tbl">
+          <caption>In pesos · member / non-member</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Member</th><th scope="col">Non-member</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Gym<small>Monthly</small></th><td>₱1,850</td><td>₱2,350</td></tr>
+            <tr><th scope="row">Gym<small>Per session</small></th><td>₱230</td><td>₱300</td></tr>
+            <tr><th scope="row">Personal coach<small>Monthly</small></th><td colspan="2">₱3,550</td></tr>
+            <tr><th scope="row">Muay Thai<small>Monthly</small></th><td>₱3,050</td><td>Members only</td></tr>
+            <tr><th scope="row">Pilates<small>Per session, 1 hour, up to 8</small></th><td>₱800</td><td>₱1,000</td></tr>
+            <tr><th scope="row">Zumba<small>Per session</small></th><td>₱120</td><td>₱150</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:14px">Rates shared by Thor's Gym, November 2026. Confirm at reception.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="cut g-black pad" id="visit" aria-labelledby="h-visit">
+    <div class="visit">
+      <div class="copy" data-sc-in data-sc-stagger="60">
+        <h2 class="x x--md" id="h-visit">Sign up at the desk.</h2>
+        <address>1st Level, R.C. Intino Building 2<br>North Montilla Boulevard, Brgy. Ong Yiu<br>Butuan City 8600</address>
+        <ol class="steps">
+          <li>Visit the reception.</li>
+          <li>Fill out the forms and set up your biometrics with the staff.</li>
+          <li>Pay the ₱500 membership, then pick monthly or per session.</li>
+        </ol>
+        <div class="row">
+          <a class="btn btn-y" href="https://www.google.com/maps/dir/?api=1&amp;destination=8.9567744,125.5401403" target="_blank" rel="noopener">Directions</a>
+          <a class="btn btn-o" href="tel:+639629662218">Call 0962 966 2218</a>
+        </div>
+      </div>
+      <div data-sc-in>
+        <div class="hours" aria-label="Opening hours">
+          <div data-days="1,2,3,4,5,6"><span>Monday to Saturday</span><span>6 AM to 10 PM</span></div>
+          <div data-days="0"><span>Sunday</span><span>1 PM to 7 PM</span></div>
+        </div>
+        <figure class="shot" style="margin-top:22px">
+          <img src="../assets/reception-800.webp" srcset="../assets/reception-800.webp 800w, ../assets/reception.webp 1600w" sizes="(min-width:900px) 45vw, 100vw" width="1600" height="1066" loading="lazy" alt="The Thor's Gym reception with yellow steel shelving and the logo on the wall">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE: the last cut is the CTA -->
+  <section class="cut g-yellow close" id="start" aria-labelledby="h-start">
+    <div class="close__main">
+      <h2 class="x" id="h-start" data-sc-in>Start today.</h2>
+      <p style="font-weight:700;font-size:clamp(1.05rem,1rem + .4vw,1.35rem);max-width:40ch;margin:0" data-sc-in>Message the gym, ask anything, then come in and lift.</p>
+      <div class="row" data-sc-in>
+        <a class="btn btn-k" href="https://m.me/100087479229671" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Start today</a>
+        <a class="btn btn-o" href="tel:+639629662218">Call</a>
+      </div>
+    </div>
+    <footer class="foot">
+      <a href="https://www.facebook.com/thorsgymbutuan" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/thorsgym.butuan" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:thorsgym2022@gmail.com">thorsgym2022@gmail.com</a>
+      <a class="opt" href="../">← See Option A</a>
+      <span>Concept website. <a href="https://kendamin.github.io/" target="_blank" rel="noopener">Watermark by Ken Abuda</a></span>
+    </footer>
+  </section>
+</main>
+
+<dialog class="msg" id="msgDialog" closedby="any" aria-labelledby="msg-title">
+  <div class="msg-inner">
+    <div class="msg-head">
+      <div><h2 id="msg-title">Message Thor's Gym</h2><p>Ask about rates, classes or how to sign up.</p></div>
+      <form method="dialog"><button class="msg-close" aria-label="Close">✕</button></form>
+    </div>
+    <!-- opens the Messenger app directly (phones only; shown by the script) -->
+    <a class="btn btn-y" id="msgApp" hidden href="fb-messenger://user-thread/100087479229671">Open Messenger app</a>
+    <a class="btn btn-o" href="https://m.me/100087479229671" target="_blank" rel="noopener">Message on Facebook</a>
+    <a class="btn btn-o" href="tel:+639629662218">Call 0962 966 2218</a>
+    <a class="btn btn-o" href="sms:+639629662218">Send a text</a>
+    <div class="msg-note" id="msgNote" hidden>
+      <p>See <strong>"Get the Messenger app"</strong>? Tap <strong>Open in Messenger</strong> below it instead.</p>
+      <p class="msg-note-small">Still not opening? Tap <strong>•••</strong> and choose <strong>Open in browser</strong>.</p>
+    </div>
+  </div>
+</dialog>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Message chooser (same pattern as Ken's other sites) ---------- */
+  const msgDialog = document.getElementById("msgDialog");
+  const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  const inFacebookApp = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(navigator.userAgent);
+  if (isPhone) document.getElementById("msgApp").hidden = false;
+  if (inFacebookApp) document.getElementById("msgNote").hidden = false;
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="https://m.me/"]');
+    if (!a || msgDialog.contains(a)) return;
+    e.preventDefault();
+    msgDialog.showModal();
+    msgDialog.querySelector(".btn:not([hidden])")?.focus();
+  });
+  if (!("closedBy" in HTMLDialogElement.prototype)) {
+    let downOutside = false;
+    const outside = e => { const r = msgDialog.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    msgDialog.addEventListener("pointerdown", e => { downOutside = outside(e); });
+    msgDialog.addEventListener("pointerup", e => { if (downOutside && outside(e)) msgDialog.close(); });
+  }
+
+  /* ---------- today's hours ---------- */
+  const wd = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Manila", weekday: "short" }).format(new Date());
+  const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(wd);
+  document.querySelector(`.hours [data-days*="${day}"]`)?.classList.add("today");
+
+  /* ---------- SIGNATURE: load the bar ----------
+     One plate per station, heaviest first, loaded symmetrically. Right-side plates are
+     real links (jump to the station); left side mirrors them for the eye only. */
+  const PLATES = [
+    { id: "floor",    kg: 25,   h: 32, c: "#D7262B", name: "The floor" },
+    { id: "strength", kg: 20,   h: 28, c: "#1F5FD1", name: "Strength" },
+    { id: "cardio",   kg: 15,   h: 24, c: "#F5D90A", name: "Cardio" },
+    { id: "pilates",  kg: 10,   h: 20, c: "#2E9E4F", name: "Pilates" },
+    { id: "muaythai", kg: 5,    h: 16, c: "#ECEAE4", name: "Muay Thai" },
+    { id: "classes",  kg: 2.5,  h: 13, c: "#D7262B", name: "Classes" },
+    { id: "sauna",    kg: 1.25, h: 11, c: "#9A9AA0", name: "Sauna" },
+    { id: "coach",    kg: 1.25, h: 11, c: "#9A9AA0", name: "Coach" }
+  ];
+  const sideL = document.getElementById("sideL"), sideR = document.getElementById("sideR");
+  const bar = document.getElementById("bar"), read = document.getElementById("read");
+  const pairs = PLATES.map(p => {
+    const r = document.createElement("a");
+    r.className = "plate"; r.href = "#" + p.id;
+    r.style.setProperty("--h", p.h + "px"); r.style.setProperty("--c", p.c);
+    r.setAttribute("aria-label", `${p.name} (${p.kg} kg plate)`); r.title = `${p.name} · ${p.kg} kg`;
+    const l = document.createElement("span");
+    l.className = "plate"; l.style.setProperty("--h", p.h + "px"); l.style.setProperty("--c", p.c);
+    sideR.append(r); sideL.append(l);
+    return { p, r, l, sec: document.getElementById(p.id) };
+  });
+  const story = document.getElementById("story");
+  let lastKg = -1, locked = false;
+  const fmt = n => (Math.round(n * 100) / 100).toString();
+  function update() {
+    const line = innerHeight * 0.62;
+    let kg = 20;
+    for (const q of pairs) {
+      const on = q.sec.getBoundingClientRect().top < line;
+      q.r.classList.toggle("on", on); q.l.classList.toggle("on", on);
+      if (on) kg += q.p.kg * 2;
+    }
+    const lock = story.getBoundingClientRect().top < innerHeight * 0.5;
+    if (lock !== locked) {
+      locked = lock;
+      bar.classList.toggle("locked", lock);
+      if (lock && !reduce) { bar.classList.remove("flash"); void bar.offsetWidth; bar.classList.add("flash"); }
+    }
+    if (kg !== lastKg || String(lock) !== read.dataset.lock) {
+      lastKg = kg; read.dataset.lock = String(lock);
+      read.innerHTML = lock ? `Locked out · <b>${fmt(kg)} kg</b>` : `<b>${fmt(kg)}</b> kg on the bar`;
+    }
+  }
+
+  /* ---------- HERO depth: planes separate as the hero leaves ---------- */
+  const hero = document.querySelector(".hero");
+  const planes = [...hero.querySelectorAll(".plane")].map(el => ({ el, d: parseFloat(el.dataset.depth) || 0, lean: parseFloat(el.dataset.lean) || 0 }));
+  const badge = document.getElementById("badge");
+  const markReady = () => hero.classList.add("ready");
+  if (badge.complete) markReady(); else { badge.addEventListener("load", markReady); badge.addEventListener("error", markReady); }
+  let mx = 0, my = 0, tx = 0, ty = 0;
+  if (!reduce && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5; });
+    hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; });
+  }
+  function heroFrame() {
+    const y = Math.min(scrollY, innerHeight * 1.2);
+    if (y > innerHeight * 1.15 && Math.abs(tx - mx) < 0.001) return;
+    mx += (tx - mx) * 0.08; my += (ty - my) * 0.08;
+    for (const p of planes) {
+      const s = p.el.classList.contains("plane--subject") ? 1 + y / innerHeight * 0.06 : 1;
+      p.el.style.transform = `translate3d(${(mx * p.lean).toFixed(2)}px, ${(y * p.d + my * p.lean * 0.6).toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+    }
+  }
+
+  let ticking = false;
+  function frame() { ticking = false; update(); if (!reduce) heroFrame(); }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  addEventListener("resize", frame);
+  if (!reduce) (function loop() { heroFrame(); requestAnimationFrame(loop); })();
+  update();
+})();
+</script>
+</body>
+</html>
