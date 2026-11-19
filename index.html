@@ -93,6 +93,8 @@
   .svc h3{font-size:26px}
   .svc p{color:var(--muted);font-size:15px}
   .svc .price{color:var(--yellow);font-weight:700;font-size:15px}
+  .linkbtn{background:none;border:0;padding:4px 0;font:inherit;font-weight:700;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .linkbtn:hover{color:var(--yellow)}
   .svc.wide{grid-column:1/-1}
   @media (min-width:900px){
     .svc.wide{flex-direction:row}
@@ -170,13 +172,28 @@
   /* phone action bar */
   .mbar{display:none}
   @media (max-width:760px){
-    .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(3,1fr);background:#0E0E10;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-    .mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;font-size:13px;font-weight:700;text-decoration:none}
-    .mbar a:first-child{background:var(--yellow);color:var(--yellow-ink)}
+    .mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);background:#0E0E10;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+    .mbar > *{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;font-size:13px;font-weight:700;text-decoration:none}
+    .mbar > *{border:0;background:none;color:inherit;font-family:inherit;cursor:pointer}
+    .mbar > :first-child{background:var(--yellow);color:var(--yellow-ink)}
     .mbar svg{width:20px;height:20px}
     footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
     .top .btn{display:none}
   }
+
+  /* Book a trial: shares the .msg dialog shell */
+  .book-form{display:grid;gap:12px}
+  .book-form label{display:grid;gap:6px;font-size:14px;font-weight:700}
+  .book-form select,.book-form input{font:inherit;font-size:16px;min-height:46px;padding:10px 12px;border-radius:8px;border:1px solid #4A4A52;background:#121214;color:#F3F1EA;width:100%}
+  .book-form select:focus-visible,.book-form input:focus-visible{outline:3px solid #F5D90A;outline-offset:1px}
+  .book-row{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+  .book-price{margin:0;font-size:14px;color:#F5D90A;font-weight:600}
+  .book-warn{margin:0;font-size:14px;color:#FFB4A8;font-weight:600}
+  .book-preview{margin:0;font-size:14px;line-height:1.5;background:#121214;border:1px dashed #4A4A52;border-radius:8px;padding:10px 12px;color:#D9D6CC}
+  .book-toast{margin:0;font-size:13px;color:#9FE3B5;min-height:1em}
+  .book-toast:empty{display:none}
+  .book .msg-inner{max-height:calc(100dvh - 24px);overflow:auto}
+  @media (max-width:600px){.book .msg-inner{max-height:92dvh}}
 
   /* Message chooser: native modal <dialog>. Facebook/Messenger's in-app browser often won't hand
      m.me links to the Messenger app, so we offer the app link, the web link and call/text. */
@@ -247,7 +264,7 @@
       <p>A fully equipped gym in Butuan City with weights, cardio, Equipment Pilates, Muay Thai and a salt sauna. Everyone is welcome, whatever your level.</p>
       <div class="cta-row">
         <a class="btn btn-y" href="https://m.me/100087479229671" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message us</a>
-        <a class="btn btn-ghost" href="#rates">See rates</a>
+        <button class="btn btn-ghost" type="button" data-book>Book a trial session</button>
       </div>
     </div>
   </section>
@@ -290,6 +307,7 @@
             <h3>Equipment Pilates</h3>
             <p>One-hour reformer sessions in a dedicated studio, up to 8 people per class.</p>
             <p class="price">₱800 members · ₱1,000 non-members</p>
+            <p><button class="linkbtn" type="button" data-book="pilates">Book a trial →</button></p>
           </div>
         </article>
         <article class="svc reveal">
@@ -349,6 +367,7 @@
           </table>
         </div>
         <p class="rate-note">Rates as shared by Thor's Gym, November 2026. Please confirm at reception, as prices can change.</p>
+        <div class="cta-row" style="margin-top:18px"><button class="btn btn-y" type="button" data-book="gym">Book a trial session</button></div>
       </div>
     </div>
   </section>
@@ -387,6 +406,7 @@
         <li><b>Fill out the forms</b><p>The staff help you with the forms and set up your biometrics for entry.</p></li>
         <li><b>Pick your plan</b><p>Annual membership is ₱500. Then choose monthly or per session, whatever fits your schedule.</p></li>
       </ol>
+      <div class="cta-row"><button class="btn btn-y" type="button" data-book>Book a trial session</button></div>
       <figure class="join-photo"><img src="assets/register-800.webp" srcset="assets/register-800.webp 800w, assets/register.webp 1600w" sizes="(min-width:1180px) 1180px, 100vw" width="1600" height="1066" loading="lazy" alt="A staff member helps a new member at the biometric scanner"></figure>
     </div>
   </section>
@@ -432,10 +452,45 @@
 </footer>
 
 <nav class="mbar" aria-label="Quick actions">
+  <button type="button" data-book><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book</button>
   <a href="https://m.me/100087479229671" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message</a>
   <a href="tel:+639629662218"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
   <a href="https://www.google.com/maps/dir/?api=1&amp;destination=8.9567744,125.5401403" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
 </nav>
+
+<dialog class="msg book" id="bookDialog" closedby="any" aria-labelledby="book-title">
+  <div class="msg-inner">
+    <div class="msg-head">
+      <div><h2 id="book-title">Book a trial session</h2><p>Pick what you'd like to try and when. We'll write the message for you.</p></div>
+      <form method="dialog"><button class="msg-close" aria-label="Close">✕</button></form>
+    </div>
+    <form class="book-form" novalidate>
+      <label>What to try
+        <select name="svc">
+          <option value="gym" data-say="a gym session" data-price="Gym session: ₱300 for non-members (₱230 for members).">Gym session</option>
+          <option value="pilates" data-say="an Equipment Pilates session" data-price="Pilates: ₱1,000 for non-members (₱800 for members). 1 hour, up to 8 people.">Equipment Pilates</option>
+          <option value="zumba" data-say="a Zumba session" data-price="Zumba: ₱150 for non-members (₱120 for members).">Zumba</option>
+          <option value="muaythai" data-say="Muay Thai" data-price="Muay Thai is monthly for members: ₱3,050 a month, plus the ₱500 annual membership.">Muay Thai</option>
+          <option value="coach" data-say="personal coaching" data-price="Personal coach: ₱3,550 a month.">Personal coach</option>
+        </select>
+      </label>
+      <p class="book-price" id="bookPrice"></p>
+      <div class="book-row">
+        <label>Day <input type="date" name="day"></label>
+        <label>Time
+          <select name="when"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+        </label>
+      </div>
+      <label>Your name <input name="name" autocomplete="name" placeholder="Optional"></label>
+      <p class="book-warn" id="bookWarn" hidden></p>
+      <p class="book-preview" id="bookPreview"></p>
+    </form>
+    <a class="btn btn-y" id="bookSms" href="sms:+639629662218">Send as a text</a>
+    <button class="btn btn-ghost" id="bookFb" type="button">Copy &amp; open Messenger</button>
+    <a class="btn btn-ghost" href="tel:+639629662218">Call 0962 966 2218</a>
+    <p class="book-toast" id="bookToast" role="status"></p>
+  </div>
+</dialog>
 
 <dialog class="msg" id="msgDialog" closedby="any" aria-labelledby="msg-title">
   <div class="msg-inner">
@@ -519,5 +574,6 @@
     vid.play().catch(() => {});
   });
 </script>
+<script src="assets/book.js" defer></script>
 </body>
 </html>
